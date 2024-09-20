@@ -3,6 +3,7 @@ using CM.Data.Repository;
 using CM.Data.Repository.IRepository;
 using CM.Data.Service;
 using CM.Data.Service.IService;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContactManager
@@ -18,6 +19,13 @@ namespace ContactManager
 
 			builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder
 				.Configuration.GetConnectionString("DefaultConnection")));
+
+			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+			.AddCookie(options =>
+			{
+				options.LoginPath = "/Login/Index";
+				options.AccessDeniedPath = "/Register/AccessDenied";
+			});
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 			builder.Services.AddScoped<IServices, Services>();

@@ -1,8 +1,44 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<ContactInfo>
+<partial name="_Notifications" />
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-black bg-gradient m-lg-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">Contacts</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row pb-3">
+			<form method="post" class="d-flex justify-content-between" enctype="multipart/form-data">
+				<div>
+					<input type="file" name="file" accept=".csv" class="form-control shadow">
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary shadow">
+						<i class="bi bi-file-earmark-plus"></i> Add
+					</button>
+				</div>
+			</form>
+		</div>
+		<table id="tblData" class="table table-bordered table-striped" style="width:100%">
+			<thead>
+				<tr>
+					<th style="color: gray; text-align:center">Name</th>
+					<th style="color: gray; text-align:center">Date of birth</th>
+					<th style="color: gray; text-align:center">Maried</th>
+					<th style="color: gray; text-align:center">Phone</th>
+					<th style="color: gray; text-align:center">Salary</th>
+					<th style="color: gray; text-align:center">Changes</th>
+				</tr>
+			</thead>
+		    <tbody style="text-align:center">
+			</tbody>
+		</table>
+	</div>
+</div>
+
+@section Scripts{
+	<script src="~/js/ContactInfo.js"></script>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
